@@ -1,0 +1,17 @@
+D Vector 725 Falcon 54.9 5.0 25 12 CHARGING
+D Orbit 987 Kestrel 45.8 2.0 14 27 IDLE
+D Lumen 348 Condor 60.3 10.0 30 27 IDLE
+D Cosmo 322 Condor 65.9 10.0 27 14 IDLE
+D Shadow 883 Condor 84.9 10.0 23 4 IDLE
+H Brutus 497 Hauler 57.3 22.0 14 10 IDLE
+H Colossus 739 Hauler 79.9 25.0 22 2 IDLE
+D Solar 644 Falcon 61.7 5.0 7 14 IDLE
+D Zephyr 538 Condor 53.8 10.0 9 24 IDLE
+D Nova 544 Kestrel 54.1 2.0 0 8 IDLE
+D Ember 663 Condor 87.7 10.0 21 21 IDLE
+D Flash 800 Condor 96.5 10.0 10 23 IDLE
+D Flare 535 Falcon 73.1 5.0 11 6 IDLE
+D Titan 229 Falcon 90.7 5.0 6 17 IDLE
+D Cinder 798 Falcon 38.9 5.0 17 28 IDLE
+D Hawk 924 Condor 86.1 10.0 24 18 IDLE
+D Drift 112 Falcon 77.3 5.0 1 28 IDLE
