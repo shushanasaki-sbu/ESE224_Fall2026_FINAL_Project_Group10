@@ -1,6 +1,6 @@
 // HeavyDrone.cpp
 // ESE 224 Fall 2026 Final Project (Part II) starter code
-// Team members: TODO
+// Team members: Katie Ni
 
 #include "HeavyDrone.h"
 #include <iostream>
@@ -11,19 +11,29 @@ HeavyDrone::HeavyDrone() : DeliveryUnit() {}
 HeavyDrone::HeavyDrone(const string& n, int id, const string& m, double b, double p, int x, int y, const string& s)
     : DeliveryUnit()
 {
-    // TODO: set every member through its mutator (Section 3.3)
+    setName(n);
+    setID(id);
+    setModel(m);
+    setBattery(b);
+    setMaxPayload(p);
+    setPosition(0, x);
+    setPosition(1, y);
+    setStatus(s);
 }
 
 bool HeavyDrone::setModel(const string& m)
 {
-    // TODO: valid only when m is Hauler
-    return false;
+    if (m == "Hauler") {
+        model = m;
+        return true;
+    }
+    else
+        return false;
 }
 
 double HeavyDrone::batteryNeeded(int x, int y, double weight) const
 {
-    // TODO: distance x HEAVY_BATTERY_PER_UNIT x (1 + HEAVY_PAYLOAD_FACTOR x weight)
-    return 0.0;
+    return distanceTo(x, y) * HEAVY_BATTERY_PER_UNIT * (1 + HEAVY_PAYLOAD_FACTOR * weight);
 }
 
 string HeavyDrone::type() const { return "Heavy"; }
