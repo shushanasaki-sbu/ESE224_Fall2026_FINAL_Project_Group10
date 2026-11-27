@@ -1,61 +1,91 @@
 // Queue.h
 // ESE 224 Fall 2026 Final Project (Part II) starter code
-// Team members: TODO
+// Team members: Shushana
 //
 // A first-in first-out queue built on your own singly linked list (Section 4.1).
 // Templates must be written entirely in the header file.
+
 
 #ifndef QUEUE_H
 #define QUEUE_H
 
 template <typename T>
-class Queue
-{
+class Queue {
 private:
-    struct Node
-    {
+    struct Node {
         T data;
         Node* next;
+        Node(const T& d) : data(d), next(nullptr) {}
     };
-    Node* frontNode;
-    Node* backNode;
-    int count;
+
+    Node* frontPtr;   // Oldest Item
+    Node* rearPtr;    // Newest Item
+    int count;        // # of elements in the queue
 
 public:
-    Queue() : frontNode(nullptr), backNode(nullptr), count(0) {}
+    Queue() : frontPtr(nullptr), rearPtr(nullptr), count(0) {}
 
-    ~Queue()
-    {
-        // TODO: free every node (hint: clear())
+    // clear remianing nodes to prevent memory leaks
+    ~Queue() {
+        clear();
     }
 
-    // A queue owns its nodes, so copying is not allowed
+    // Disable copying 
     Queue(const Queue&) = delete;
     Queue& operator=(const Queue&) = delete;
 
-    void enqueue(const T& item)
-    {
-        // TODO: add a new node at the back
+    // This function appends a copy of an item to the back of the quueu
+    void enqueue(const T& item) {
+        Node* newNode = new Node(item);
+        if (isEmpty()) {
+            frontPtr = newNode;
+            rearPtr = newNode;
+        } else {
+            rearPtr-> next = newNode;
+            rearPtr = newNode;
+        }
+        count++;
     }
 
-    bool dequeue(T& item)
-    {
-        // TODO: remove the front node, copy its data into item, return true; false if empty
-        return false;
+    // This function removes the front item into item and returns false if empty
+    bool dequeue(T& item) {
+        if (isEmpty()) {
+            return false;
+        }
+        Node* temp = frontPtr;
+        item = frontPtr->data;
+        frontPtr = frontPtr->next;
+        if (frontPtr == nullptr) {
+            rearPtr= nullptr;
+        }
+        delete temp;
+        count--;
+        return true;
     }
 
-    bool front(T& item) const
-    {
-        // TODO: copy the front data into item without removing it
-        return false;
+    // This function copies the front item into item without removing it and returns false if empty
+    bool front(T& item) const {
+        if (isEmpty()) {
+            return false;
+        }
+        item = frontPtr->data;
+        return true;
     }
 
-    bool isEmpty() const { return frontNode == nullptr; }
-    int size() const { return count; }
+    // This function returns true when there are no elements in the queue
+    bool isEmpty() const {
+        return count == 0;
+    }
 
-    void clear()
-    {
-        // TODO: remove every node
+    // returns $ of elements in the queue
+    int size() const {
+        return count;
+    }
+
+    // Removes + delets every node in the queue
+    void clear() {
+        T dummy;
+        while (dequeue(dummy)) {}
     }
 };
 
